@@ -109,6 +109,9 @@ public class IntermediateTimerEventRepeatWithEndTest extends PluggableActivitiTe
 
     waitForJobExecutorToProcessAllJobs(4000, 500);
     //expect to execute because the end time is reached.
+    
+    // wait a bit more for slow DBs
+    waitForJobExecutorToProcessAllJobs(2000, 1000);
 
     if (processEngineConfiguration.getHistoryLevel().isAtLeast(HistoryLevel.ACTIVITY)) {
       HistoricProcessInstance historicInstance = historyService.createHistoricProcessInstanceQuery()
